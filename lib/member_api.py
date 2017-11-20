@@ -8,11 +8,13 @@ class MemberApi(object):
         lname = request.form['lname']
         addr = request.form['addr']
         ph = request.form['ph']
+        d_date = request.form['d_date']
+        e_date = request.form['e_date']
         type = request.form['type']
-        if not fname or not lname or not addr or not ph or not type:
+        if not fname or not lname or not addr or not ph or not d_date or not e_date or not type:
             flash("enter all the field")
         else:
-            member = Member(fname,lname,addr,ph,type)
+            member = Member(fname,lname,addr,ph, d_date, e_date,type)
             db.session.add(member)
             db.session.commit()
             flash("create succed")
@@ -37,14 +39,18 @@ class MemberApi(object):
         lname = req.form['lname']
         addr = req.form['addr']
         ph = req.form['ph']
+        d_date = req.form['d_date']
+        e_date = req.form['e_date']
         type = req.form['type']
-        if not fname or not lname or not type or not addr or not ph:
+        if not fname or not lname or not type or not addr or not d_date or not e_date or not ph:
             flash("enter all the field")
         else:
             member.fname = fname
             member.lname = lname
             member.addr = addr
             member.ph = ph
+            member.d_date = d_date
+            member.e_date = e_date
             member.type = type
 
             db.session.commit()
