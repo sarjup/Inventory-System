@@ -1,5 +1,5 @@
-from lib.app import app
-# from lib.models import db
+from app.app import app
+# from app.models import db
 
 
 if __name__=='__main__':

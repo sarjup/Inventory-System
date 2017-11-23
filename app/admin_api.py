@@ -1,9 +1,11 @@
 from models import Admin, db, admin_schema, admins_schema
 from flask import flash
+from json import dumps
 
 class AdminApi(object):
     @staticmethod
     def create_admin(request):
+        
         fname = request.form['fname']
         lname = request.form['lname']
         uname = request.form['uname']
@@ -37,16 +39,16 @@ class AdminApi(object):
         fname = req.form['fname']
         lname = req.form['lname']
         uname = req.form['uname']
-        pw = req.form['pw']
+        # pw = req.form['pw']
         addr = req.form['addr']
         ph = req.form['ph']
-        if not fname or not lname or not uname or not pw or not addr or not ph:
+        if not fname or not lname or not uname or not addr or not ph:
             flash("enter all the field")
         else:
             admin.fname = fname
             admin.lname = lname
             admin.uname = uname
-            admin.pw = pw
+            # admin.pw = pw
             admin.addr = addr
             admin.ph = ph
 
@@ -58,6 +60,14 @@ class AdminApi(object):
         admin = Admin.query.get(id)
         db.session.delete(admin)
         db.session.commit()
-        return admin  
+        return admin 
+
+    @staticmethod
+    def login_admin(request):
+        user = Admin.query.filter_by(uname = request.form['uname'], pw = request.form['pw']).first()
+        # # print '=='*50
+        # result = admin_schema.dump(user).data 
+        # # print result 
+        return user
         
 
