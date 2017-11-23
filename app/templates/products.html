@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %} {% include 'sidebar.html' %}
+
+
+<div class="col-sm-10 main  " id="add-product">
+    <h2>Add Product Detail</h2>
+    <form class="text-left">
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="product-name">Product Name</label>
+                <input type="text" class="form-control" id="product-name" name="product_name" placeholder="Enter Product Name">
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="product-description">Product Description</label>
+                <input type="text" class="form-control" id="product-description" name="product_description" placeholder="Enter Product Description">
+            </div>
+            <div class="form-group col-sm-2">
+                <label for="product-price">Product Price</label>
+                <input type="text" class="form-control" id="product-price" name="product_price" value="0">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Product</button>
+    </form>
+
+
+    <h2>Product List </h2>
+
+    <table class="table table-hover" id="initial-product-list-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>Product Price</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script type="text/html" id="initial-product-list-table-tpl">
+        <tr>
+            <td data-content="product_id"></td>
+            <td data-content="product_name"></td>
+            <td data-content="product_description"></td>
+            <td data-content="product_price"></td>
+            <td>
+                <ul class="list-inline">
+
+                    <li>
+                        <button data-template-bind='[{"attribute": "data-id", "value": "product_id"}]' data-target="#edit-product-modal" data-toggle="modal" class="btn btn-default product-edit-btn">Edit</button>
+
+                    </li>
+
+                    <!-- <li>
+                        <button data-template-bind='[{"attribute": "data-id", "value": "product_id"}]' class="btn btn-default product-remove-btn">Remove</button>
+                    </li> -->
+                </ul>
+            </td>
+        </tr>
+
+    </script>
+
+</div>
+{% endblock %}

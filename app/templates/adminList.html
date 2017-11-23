@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %} {% include 'modals/editadmin.html' %} {% include 'sidebar.html' %}
+<div class="col-sm-10 main">
+    <h2>Admin List</h2>
+    <!-- <p>The .table-hover class enables a hover state on table rows:</p> -->
+    <table id="admin-list-table" class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>User Name</th>
+                <th>Address</th>
+                <th>Contact</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+</div>
+</div>
+<!-- Table template -->
+<script type="text/html" id="admin-list-item-tpl">
+    <tr>
+        <td data-content="id"></td>
+        <td data-content="fname"></td>
+        <td data-content="lname"></td>
+        <td data-content="uname"></td>
+        <td data-content="addr"></td>
+        <td data-content="ph"></td>
+        <td>
+            <ul class="list-inline">
+                <li>
+                    <button data-template-bind='[{"attribute": "data-id", "value": "id"}]' data-target="#edit-admin-modal" data-toggle="modal" class="btn btn-default edit-admin-btn">Edit</button>
+
+                </li>
+                <li>
+                    <button data-template-bind='[{"attribute": "data-id", "value": "id"}]' class="btn btn-default remove-admin-btn">Remove</button>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</script>
+<!--template end -->
+
+{% endblock %}
