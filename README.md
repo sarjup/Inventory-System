@@ -1,7 +1,7 @@
 # Flask + SQLAlchemy
 Web based Inventory system with flask and postgres
 
-## How to stat server
+## How to starts server
 clone this repositoty to your local repo
 
 
